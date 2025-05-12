@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hamming Ball Emulator</title>
+    <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+    <h1 class="main-title">Hamming Ball Emulator</h1>
+
+    <div class="pre-info">
+        <p>This website visualizes Hamming balls of a desired radius and provides additional information about the coding scheme using the generator matrix of a linear code over F<sub>2</sub>.</p>
+    </div>
+
+    <div class="container">
+        <div class="info-box">
+            <p>Enter the generator matrix for a linear code over F2. Enter each row on a new line, with spaces between elements.</p>
+            <p>Example format for a [7,4] Hamming code:</p>
+            <pre>1 0 0 0 1 1 0
+0 1 0 0 1 0 1
+0 0 1 0 0 1 1
+0 0 0 1 1 1 1</pre>
+        </div>
+
+        <div class="input-section">
+            <label for="generator-matrix">Generator Matrix:</label>
+            <textarea id="generator-matrix" placeholder="Enter generator matrix..."></textarea>
+            <div id="error-message"></div>
+        </div>
+
+        <button id="process-button">Process Matrix</button>
+    </div>
+
+    <div class="container">
+        <h2 id="matrix-info-title">Code Information</h2>
+        <div id="matrix-info">
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Hamming Balls</h2>
+        <div id="visualization" class="visualization">
+            <div class="instruction-panel hidden">
+                <p><strong>Click on any red codeword node to select it and customize the Hamming ball radius.</strong></p>
+            </div>
+
+            <div id="sigma-wrapper" class="sigma-wrapper">
+                <div class="legend full-view-legend hidden">
+                    <div class="legend-item"><span class="legend-dot codeword-dot"></span> Codewords (centers)</div>
+                    <div class="legend-item"><span class="legend-dot word-dot"></span> Words</div>
+                    <div class="legend-item"><span class="legend-line"></span> <span id="full-view-distance-text">Hamming distance ≤ </span></div>
+                </div>
+
+                <div class="legend selected-view-legend hidden">
+                    <div class="legend-item"><span class="legend-dot selected-dot"></span> <span id="selected-codeword-text">Selected Codeword: </span></div>
+                    <div class="legend-item"><span class="legend-dot word-dot"></span> Words</div>
+                    <div class="legend-item"><span class="legend-line"></span> <span id="selected-view-distance-text">Hamming distance = </span></div>
+                </div>
+            </div>
+
+            <div class="control-panel hidden">
+                <h3>Hamming Ball Radius Control</h3>
+                <p>Select radius for codeword: <strong id="control-panel-codeword"></strong></p>
+                <div class="radius-control">
+                    <select id="radius-dropdown">
+                    </select>
+                </div>
+                <button id="apply-radius">Apply Radius</button>
+            </div>
+
+            <div class="info-panel">
+                <h3>Hamming Ball Information:</h3>
+                <div id="hamming-ball-info">
+                </div>
+                <button id="reset-view" class="hidden">Reset to Full View</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/graphology/0.25.4/graphology.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sigma.js/2.4.0/sigma.min.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
