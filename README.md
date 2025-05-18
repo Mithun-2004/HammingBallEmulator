@@ -95,6 +95,7 @@ _No dependencies or build tools required._
 
 ```
 .
+├── TheHammingBallEmulator.pdf
 ├── index.html
 ├── style.css
 ├── script.js
